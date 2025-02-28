@@ -1,3 +1,4 @@
+configfile: "config/config.yaml"
 executor: slurm
 jobs: 500
 latency-wait: 60
@@ -7,8 +8,5 @@ default-resources:
   - mem_mb=16096
   - runtime=120
   - slurm_partition=campus-new
-  # you can change the default account or partition by them to the default-resources.
-  # Without these options it will default to stergachislab and compute when using hyak.
-# - slurm_partition=ckpt
-# - slurm_account=stergachislab
+
 
