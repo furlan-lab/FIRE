@@ -1,9 +1,7 @@
 name: fire
 channels:
-  - numba
   - conda-forge
   - bioconda
-  - defaults
 dependencies:
   - defopt
   - numpy==1.24 # use this version to avoid cxx errors

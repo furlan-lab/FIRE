@@ -1,10 +1,15 @@
 [project]
 authors = ["Mitchell Robert Vollger <mrvollger@gmail.com>"]
-channels = ["conda-forge", "bioconda"]
+channels = ["https://conda-forge.fredhutch.org/bioconda", "https://conda-forge.fredhutch.org/conda-forge"]
+channel-priority = "disabled"
 description = "Add a short description here"
 name = "FIRE"
-platforms = ["osx-64", "linux-64"]
+platforms = ["linux-64"]
 version = "0.1.1"
+
+[system-requirements]
+linux = "4.15"
+libc = { family="glibc", version="2.27" }
 
 [tasks]
 fmt = "ruff format . && taplo format pixi.toml && snakefmt workflow/"
@@ -33,7 +38,7 @@ test = { cmd = [
   "--configfile",
   "test.yaml",
   "-k",
-], depends_on = [
+], depends-on = [
   "test-data",
 ], clean-env = true }
 
@@ -57,12 +62,11 @@ slurm = { cmd = [
 ] }
 
 [dependencies]
-conda = "*"
 snakemake = "==8.21"
 snakemake-executor-plugin-slurm = ">=0.11.2"
 snakefmt = "*"
 ruff = "*"
-awscli = "2.22"
+awscli = "2.22.*"
 taplo = "*"
-
+conda = ">=24.7"
 [pypi-dependencies]
